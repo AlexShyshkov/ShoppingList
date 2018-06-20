@@ -12,19 +12,6 @@ namespace ShoppingList
             InitializeComponent();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            ItemCheckedListBox.Items.Add(item);
-            buttonAdd.Enabled = false;
-            ItemTextBox.Clear();
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            ItemCheckedListBox.Items.RemoveAt(ItemCheckedListBox.SelectedIndex);
-            buttonDelete.Enabled = false;
-        }
-
         private bool DeleteSpacebar
         {
             get
@@ -53,6 +40,19 @@ namespace ShoppingList
         private void ItemTextBox_TextChanged(object sender, EventArgs e)
         {
             buttonAdd.Enabled = IsNotEqualItem;
+        }
+
+        private void ButtonAdd_Click(object sender, EventArgs e)
+        {
+            ItemCheckedListBox.Items.Add(item);
+            buttonAdd.Enabled = false;
+            ItemTextBox.Clear();
+        }
+
+        private void ButtonDelete_Click(object sender, EventArgs e)
+        {
+            ItemCheckedListBox.Items.RemoveAt(ItemCheckedListBox.SelectedIndex);
+            buttonDelete.Enabled = false;
         }
     }
 }
