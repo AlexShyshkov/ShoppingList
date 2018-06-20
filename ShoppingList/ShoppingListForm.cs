@@ -40,7 +40,7 @@ namespace ShoppingList
         {
             get
             {
-                bool isSpscebar = DeleteSpacebar;
+                bool isSpacebar = DeleteSpacebar;
                 return item.Length > 0 && ItemCheckedListBox.FindStringExact(item) == -1;
             }
         }
