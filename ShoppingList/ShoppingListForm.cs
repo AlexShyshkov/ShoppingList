@@ -25,22 +25,18 @@ namespace ShoppingList
             buttonDelete.Enabled = false;
         }
 
-        private bool DeleteSpacebar
+        private void DeleteSpacebar()
         {
-            get
-            {
-                char[] symbol = { ' ' };
-                string[] words = ItemTextBox.Text.Split(symbol, StringSplitOptions.RemoveEmptyEntries);
-                item = string.Join(" ", words);
-                return true;
-            }
+            char[] symbol = { ' ' };
+            string[] words = ItemTextBox.Text.Split(symbol, StringSplitOptions.RemoveEmptyEntries);
+            item = string.Join(" ", words);
         }
 
         private bool IsNotEqualItem
         {
             get
             {
-                bool isSpacebar = DeleteSpacebar;
+                DeleteSpacebar();
                 return item.Length > 0 && ItemCheckedListBox.FindStringExact(item) == -1;
             }
         }
