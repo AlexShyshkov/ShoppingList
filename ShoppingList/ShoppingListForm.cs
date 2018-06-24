@@ -25,11 +25,14 @@ namespace ShoppingList
             buttonDelete.Enabled = false;
         }
 
-        private void DeleteSpacebar()
+        private void ItemCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            char[] symbol = { ' ' };
-            string[] words = ItemTextBox.Text.Split(symbol, StringSplitOptions.RemoveEmptyEntries);
-            item = string.Join(" ", words);
+            buttonDelete.Enabled = true;
+        }
+
+        private void ItemTextBox_TextChanged(object sender, EventArgs e)
+        {
+            buttonAdd.Enabled = IsNotEqualItem;
         }
 
         private bool IsNotEqualItem
@@ -41,14 +44,11 @@ namespace ShoppingList
             }
         }
 
-        private void ItemCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void DeleteSpacebar()
         {
-            buttonDelete.Enabled = true;
-        }
-
-        private void ItemTextBox_TextChanged(object sender, EventArgs e)
-        {
-            buttonAdd.Enabled = IsNotEqualItem;
+            char[] symbol = { ' ' };
+            string[] words = ItemTextBox.Text.Split(symbol, StringSplitOptions.RemoveEmptyEntries);
+            item = string.Join(" ", words);
         }
     }
 }
