@@ -12,6 +12,15 @@ namespace ShoppingList
             InitializeComponent();
         }
 
+        private bool IsNotEqualItem
+        {
+            get
+            {
+                DeleteSpacebar();
+                return item.Length > 0 && ItemCheckedListBox.FindStringExact(item) == -1;
+            }
+        }
+
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             ItemCheckedListBox.Items.Add(item);
@@ -34,16 +43,7 @@ namespace ShoppingList
         {
             buttonAdd.Enabled = IsNotEqualItem;
         }
-
-        private bool IsNotEqualItem
-        {
-            get
-            {
-                DeleteSpacebar();
-                return item.Length > 0 && ItemCheckedListBox.FindStringExact(item) == -1;
-            }
-        }
-
+        
         private void DeleteSpacebar()
         {
             char[] symbol = { ' ' };
