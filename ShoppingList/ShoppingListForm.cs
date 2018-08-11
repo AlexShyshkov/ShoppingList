@@ -11,7 +11,7 @@ namespace ShoppingList
         {
             InitializeComponent();
         }
-
+                
         private bool IsNotEqualItem
         {
             get
@@ -32,6 +32,7 @@ namespace ShoppingList
         {
             ItemCheckedListBox.Items.RemoveAt(ItemCheckedListBox.SelectedIndex);
             buttonDelete.Enabled = false;
+            ItemTextBox_TextChanged(this, EventArgs.Empty);
         }
 
         private void ItemCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace ShoppingList
         {
             buttonAdd.Enabled = IsNotEqualItem;
         }
-        
+
         private void DeleteSpacebar()
         {
             char[] symbol = { ' ' };
