@@ -31,8 +31,8 @@ namespace ShoppingList
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             ItemCheckedListBox.Items.RemoveAt(ItemCheckedListBox.SelectedIndex);
-            buttonDelete.Enabled = false;
-            ItemTextBox_TextChanged(this, EventArgs.Empty);
+            buttonDelete.Enabled = false;            
+            FindSimilarItems();
         }
 
         private void ItemCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace ShoppingList
 
         private void ItemTextBox_TextChanged(object sender, EventArgs e)
         {
+            FindSimilarItems();
             buttonAdd.Enabled = IsNotEqualItem;
         }
 
@@ -50,6 +51,30 @@ namespace ShoppingList
             char[] symbol = { ' ' };
             string[] words = ItemTextBox.Text.Split(symbol, StringSplitOptions.RemoveEmptyEntries);
             item = string.Join(" ", words);
+        }
+
+        private void FindSimilarItems()
+        {
+            string similarItem = ItemTextBox.Text;
+            similarItem = similarItem.Trim();
+            foreach (object clone in ItemCheckedListBox.Items)
+            {
+                string cloneElement = clone.ToString();
+                if (cloneElement == similarItem)
+                {
+                    buttonAdd.Enabled = false;
+                    break;
+                }
+                else
+                {
+                    buttonAdd.Enabled = true;
+                }
+            }
+
+            if (ItemTextBox.Text.Length == 0)
+            {
+                buttonAdd.Enabled = false;
+            }
         }
     }
 }
